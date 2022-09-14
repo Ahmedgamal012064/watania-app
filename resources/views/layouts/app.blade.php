@@ -167,5 +167,16 @@ transition: background 0.4s;
 </script>
 @endforeach
 @endif
+
+@if (Session::has('success'))
+    <script>
+        toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+    toastr.success("{{ Session::get('success') }}");
+    </script>
+@endif
 </body>
 </html>

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    //toastr()->info('Are you the 6 fingered man?');
     return view('auth.login');
 });
 

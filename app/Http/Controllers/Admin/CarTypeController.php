@@ -33,7 +33,7 @@ class CarTypeController extends Controller
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('some thing wrong try again');
+            flasher('حدث خطا حاول مرة اخري','error');
             return redirect( route('admin.cars.types.create'))
                         ->withErrors($validator)
                         ->withInput();
@@ -41,8 +41,8 @@ class CarTypeController extends Controller
 
         CarType::create($request->all());
 
-        toastr()->success('تم الاضافة بنجاح');
-        return redirect()->route('admin.cars.types');
+        flasher('تم الاضافة بنجاح','success');
+        return redirect()->route('admin.cars.types')->with(["success",'تم الاضافة بنجاح']);
     }
 
 
@@ -59,7 +59,7 @@ class CarTypeController extends Controller
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('some thing wrong try again');
+            flasher('حدث خطا حاول مرة اخري','error');
             return redirect( route('admin.cars.types.edit',$id))
                         ->withErrors($validator)
                         ->withInput();
@@ -67,7 +67,7 @@ class CarTypeController extends Controller
 
         CarType::where('id', $id)->update($request->all());
 
-        toastr()->success('تم الاضافة بنجاح');
+        flasher('تم الاضافة بنجاح','success');
         return redirect()->route('admin.cars.types');
     }
 
