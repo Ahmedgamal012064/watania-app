@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('auth.login');
-});
+})->name('welcome');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -101,6 +101,9 @@ Route::group(['namespace' => 'Admin'], function () {
     ######################### Begin drivers Routes ########################
     Route::group(['prefix' => 'drivers'], function () {
         Route::get('/',[App\Http\Controllers\Admin\DriverController::class, 'index']) -> name('admin.drivers');
+        Route::get('/without-car',[App\Http\Controllers\Admin\DriverController::class, 'withoutcar']) -> name('admin.drivers.withoutcar');
+        Route::get('/with-car',[App\Http\Controllers\Admin\DriverController::class, 'withcar']) -> name('admin.drivers.withcar');
+
         Route::get('create',[App\Http\Controllers\Admin\DriverController::class, 'create']) -> name('admin.drivers.create');
         Route::post('store', [App\Http\Controllers\Admin\DriverController::class, 'store']) -> name('admin.drivers.store');
         Route::get('edit/{id}', [App\Http\Controllers\Admin\DriverController::class, 'edit']) -> name('admin.drivers.edit');

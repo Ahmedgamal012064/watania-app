@@ -65,7 +65,7 @@ class CarTypeController extends Controller
                         ->withInput();
         }
 
-        CarType::where('id', $id)->update($request->all());
+        CarType::where('id', $id)->update($request->except('_token'));
 
         flasher('تم الاضافة بنجاح','success');
         return redirect()->route('admin.cars.types');

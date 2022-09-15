@@ -12,12 +12,12 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
-        $users = User::get();
+        $users = User::where('type','!=','admin')->where('id','!=',Auth::id())->get();
         return view('admin.users.index',compact('users'));
     }
 
@@ -30,27 +30,26 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name'       => 'required',
-            'phone'      => 'required|unique:users,phone',
             'email'      => 'required|email|unique:users,email',
-            'password'      => 'required|min:8',
+            'password'      => 'required',
+            'roles.*'      => 'required',
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('Some thing wrong try again');
+            flasher('حدث خطا حاول مرة اخري','error');
             return redirect( route('admin.users.create'))
                         ->withErrors($validator)
                         ->withInput();
         }
         User::create([
             'name'       => $request->name,
-            'phone'      => $request->phone,
             'email'      => $request->email,
             "type"       => "user" ,
-            "phone_veify"  => 1 ,
-            "password" =>  Hash::make($request->password)
+            "password" =>  Hash::make($request->password),
+            'roles'    => implode(',',$request->roles)
         ]);
 
-        toastr()->success('success');
+        flasher('تم الاضافة بنجاح','success');
         return redirect()->route('admin.users')->with(["success","success"]);
     }
 
@@ -64,13 +63,12 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name'       => 'required',
-            'phone'      => 'required|unique:users,phone,'.$id,
             'email'      => 'required|email|unique:users,email,'.$id,
-            'password'      => 'required|min:8',
+            'roles.*'      => 'required',
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('Some thing wrong try again');
+            flasher('حدث خطا حاول مرة اخري','error');
             return redirect( route('admin.users.edit',$id))
                         ->withErrors($validator)
                         ->withInput();
@@ -85,12 +83,11 @@ class UserController extends Controller
 
         User::where('id', $id)->update([
             'name'       => $request->name,
-            'phone'      => $request->phone,
-            "phone_veify"  => 1 ,
             'email'      => $request->email,
+            'roles'    => implode(',',$request->roles)
         ]);
 
-        toastr()->success('success');
+        flasher('تم الاضافة بنجاح','success');
         return redirect()->route('admin.users')->with(["success","success"]);
     }
 }

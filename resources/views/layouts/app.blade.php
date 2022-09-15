@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/css-rtl/plugins/animate/animate.css')}}">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/css-rtl/vendors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/vendors/css/forms/icheck/icheck.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/vendors/css/forms/icheck/custom.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/vendors/css/weather-icons/climacons.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/fonts/meteocons/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/vendors/css/charts/morris.css')}}">
@@ -48,6 +50,7 @@
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/css-rtl/style-rtl.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('Adminlook/css/plugins/forms/checkboxes-radios.css')}}">
     <!-- END Custom CSS-->
     @yield('style')
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
@@ -100,7 +103,7 @@ transition: background 0.4s;
 <script src="{{asset('Adminlook/js/scripts/forms/switch.js')}}" type="text/javascript"></script>
 <script src="{{asset('Adminlook/vendors/js/forms/select/select2.full.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('Adminlook/js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script>
-
+<script src="{{asset('Adminlook/vendors/js/forms/icheck/icheck.min.js')}}" type="text/javascript"></script>
 <!-- BEGIN PAGE VENDOR JS-->
 <script src="{{asset('Adminlook/vendors/js/charts/chart.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('Adminlook/vendors/js/charts/echarts/echarts.js')}}" type="text/javascript"></script>

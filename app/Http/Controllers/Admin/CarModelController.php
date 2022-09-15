@@ -4,39 +4,37 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Cat;
+use App\Models\CarModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class ServicesController extends Controller
+class CarModelController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:web');
     }
 
     public function index()
     {
-        $services = Cat::get();
-        return view('admin.services.index',compact('services'));
+        $cars = CarModel::get();
+        return view('admin.cars-models.index',compact('cars'));
     }
 
     public function create()
     {
-        return view('admin.services.create');
+        return view('admin.cars-models.create');
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name_en'          => 'required',
-            'name_fr'          => 'required',
-            'photo'            => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'model'          => 'required',
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('some thing wrong try again');
-            return redirect( route('admin.services.create'))
+            flasher('حدث خطا حاول مرة اخري','error');
+            return redirect( route('admin.cars.models.create'))
                         ->withErrors($validator)
                         ->withInput();
         }
@@ -45,62 +43,49 @@ class ServicesController extends Controller
             $filePath = uploadImage('cats', $request->photo);
         }
 
-        Cat::create([
-            'name_en'          => $request->name_en,
-            'name_fr'          => $request->name_fr,
-            'photo'            => $filePath ,
+        CarModel::create([
+            'model'          => $request->model,
         ]);
 
-        toastr()->success('Success');
-        return redirect()->route('admin.services')->with(["success","Success"]);
+        flasher('تم الاضافة بنجاح','success');
+        return redirect()->route('admin.cars.models')->with(["success","Success"]);
     }
 
 
     public function edit($id)
     {
-        $service = Cat::find($id);
-        return view('admin.services.edit',compact('service'));
+        $car = CarModel::find($id);
+        return view('admin.cars-models.edit',compact('car'));
     }
 
     public function update(Request $request , $id)
     {
         $validator = Validator::make($request->all(), [
-            'name_en'          => 'required',
-            'name_fr'          => 'required',
-            'photo'            => 'required_without:id|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'model'          => 'required',
         ]);
 
         if ($validator->fails()) {
-            toastr()->error('some thing wrong try again');
-            return redirect( route('admin.services.edit',$id))
+            flasher('حدث خطا حاول مرة اخري','error');
+            return redirect( route('admin.cars.models.edit',$id))
                         ->withErrors($validator)
                         ->withInput();
         }
 
-        if ($request->has('photo')) {
-            $filePath = uploadImage('cats', $request->photo);
-            Cat::where('id', $id)->update([
-                'photo'   =>  $filePath
-            ]);
-
-        }
-
-        Cat::where('id', $id)->update([
-            'name_en'          => $request->name_en,
-            'name_fr'          => $request->name_fr,
+        CarModel::where('id', $id)->update([
+            'model'          => $request->model,
         ]);
 
-        toastr()->success('Success');
-        return redirect()->route('admin.services')->with(["success","Success"]);
+        flasher('تم الاضافة بنجاح','success');
+        return redirect()->route('admin.cars.models')->with(["success","Success"]);
     }
 
     public function destroy($id)
     {
-        $cat = Cat::find($id);
+        $cat = CarModel::find($id);
         $cat->update([
             'status'   => 0
         ]);
-        toastr()->success('Success');
-        return redirect()->route('admin.services')->with(["success","Success"]);
+        flasher('تم الاضافة بنجاح','success');
+        return redirect()->route('admin.cars.models')->with(["success","Success"]);
     }
 }

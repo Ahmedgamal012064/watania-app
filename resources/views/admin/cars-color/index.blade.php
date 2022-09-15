@@ -1,17 +1,17 @@
 @extends('layouts.app')
-@section('title',"موديل السيارات")
+@section('title',"الوان")
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">  موديل السيارات </h3>
+                    <h3 class="content-header-title">  الوان </h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('home')}}">الرئيسية</a>
+                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active"> موديل السيارات
+                                <li class="breadcrumb-item active"> الوان
                                 </li>
                             </ol>
                         </div>
@@ -25,7 +25,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title"> موديل السيارات</h4>
+                                    <h4 class="card-title">الوان</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -47,9 +47,9 @@
                                             class="table display nowrap table-striped table-bordered scroll-horizontal">{{--scroll-horizontal--}}
                                             <thead class="">
                                             <tr>
-                                                <th>#id</th>
-                                                <th>الموديل</th>
-                                                <th>الاكشن</th>
+                                                <th>الاسم </th>
+                                                <th>اللون</th>
+                                                <th>الاكسن</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -57,11 +57,12 @@
                                             @isset($cars )
                                                 @foreach($cars  as $car )
                                                     <tr>
-                                                        <td>{{$car-> id}}</td>
-                                                        <td>{{$car-> model}}</td>
+                                                        <td>{{$car-> color}}</td>
+                                                        <td>{{$car-> hex}}</td>
+
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                                <a href="{{route('admin.cars.models.edit',$car -> id)}}"
+                                                                <a href="{{route('admin.cars.colors.edit',$car -> id)}}"
                                                                     class="btn btn-outline-primary btn-sm box-shadow-3 mr-1 mb-1">تعديل</a>
 
                                                             {{-- <a href="{{route('admin.services.delete',$service -> id)}}"

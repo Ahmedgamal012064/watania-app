@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title',"اضافة موديل السيارة")
+@section('title',"تعديل شكاوي")
 
 @section('content')
 
@@ -12,9 +12,9 @@
                             <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">الرئيسية </a>
                                 </li>
-                            <li class="breadcrumb-item"><a href="{{route('admin.cars.models')}}">  موديل السيارات </a>
+                            <li class="breadcrumb-item"><a href="{{route('admin.complains')}}">  الماركات </a>
                                 </li>
-                                <li class="breadcrumb-item active">اضافة موديل سياراة
+                                <li class="breadcrumb-item active">تعديل شكاوي -  {{$complain->name}}
                                 </li>
                             </ol>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> اضافة موديل سياراة </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> تعديل شكاوي -  {{$complain->name}} </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -44,20 +44,21 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.cars.models.store')}}"
+                                        <form class="form" action="{{route('admin.complains.update',$complain -> id)}}"
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
+                                            <input name="id" value="{{$complain -> id}}" type="hidden">
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> البيانات </h4>
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label for="projectinput1">الموديل </label>
-                                                                    <input type="text" id="model"
+                                                                    <label for="projectinput1">الاسم </label>
+                                                                    <input type="text" id="name"
                                                                         class="form-control"
-                                                                        placeholder="الموديل"
-                                                                        name="model" required>
-                                                                    @error("model")
+                                                                        value="{{$complain->name}}"
+                                                                        name="name" required>
+                                                                    @error("name")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror
                                                                 </div>
@@ -68,10 +69,10 @@
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
-                                                    <i class="ft-x"></i>  تراجع
+                                                    <i class="ft-x"></i> تراجع
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> حفظ
+                                                    <i class="la la-check-square-o"></i>  حفظ
                                                 </button>
                                             </div>
                                         </form>

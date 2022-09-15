@@ -1,5 +1,5 @@
-@extends('layouts.admin')
-@section('title',"Add Service")
+@extends('layouts.app')
+@section('title',"اضافة ماركات السيارة")
 
 @section('content')
 
@@ -10,11 +10,11 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home </a>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">الرئيسية </a>
                                 </li>
-                            <li class="breadcrumb-item"><a href="{{route('admin.services')}}">  Service </a>
+                            <li class="breadcrumb-item"><a href="{{route('admin.cars.brands')}}">  ماركات السيارات </a>
                                 </li>
-                                <li class="breadcrumb-item active"> Add Service
+                                <li class="breadcrumb-item active">اضافة ماركات سياراة
                                 </li>
                             </ol>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">  Add Service </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> اضافة ماركات سياراة </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -44,42 +44,20 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.services.store')}}"
+                                        <form class="form" action="{{route('admin.cars.brands.store')}}"
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
-                                                <div class="form-group">
-                                                    <label> Photo  </label>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="file" name="photo"  required />
-                                                        <span class="file-custom"></span>
-                                                    </label>
-                                                    @error('photo')
-                                                    <span class="text-danger">{{$message}}</span>
-                                                    @enderror
-                                                </div>
-                                                <h4 class="form-section"><i class="ft-home"></i> Service Details </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i> البيانات </h4>
                                                         <div class="row">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label for="projectinput1"> Name English </label>
-                                                                    <input type="text" value="" id="name"
+                                                                    <label for="projectinput1">الاسم </label>
+                                                                    <input type="text" id="name"
                                                                         class="form-control"
-                                                                        placeholder="Name English"
-                                                                        name="name_en" required>
-                                                                    @error("name_en")
-                                                                <span class="text-danger">{{$message}}</span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="projectinput1"> Name French </label>
-                                                                    <input type="text" value="" id="name"
-                                                                        class="form-control"
-                                                                        placeholder="Name French"
-                                                                        name="name_fr" required>
-                                                                    @error("name_fr")
+                                                                        placeholder="الاسم"
+                                                                        name="name" required>
+                                                                    @error("name")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror
                                                                 </div>
@@ -90,10 +68,10 @@
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
-                                                    <i class="ft-x"></i> Back
+                                                    <i class="ft-x"></i>  تراجع
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> Save
+                                                    <i class="la la-check-square-o"></i> حفظ
                                                 </button>
                                             </div>
                                         </form>

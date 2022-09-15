@@ -1,17 +1,17 @@
-@extends('layouts.admin')
-@section('title',"Service")
+@extends('layouts.app')
+@section('title',"ماركات السيارات")
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">  Service </h3>
+                    <h3 class="content-header-title">  ماركات السيارات </h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('home')}}">الرئيسية</a>
                                 </li>
-                                <li class="breadcrumb-item active"> Service
+                                <li class="breadcrumb-item active"> ماركات السيارات
                                 </li>
                             </ol>
                         </div>
@@ -25,7 +25,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Service</h4>
+                                    <h4 class="card-title"> ماركات السيارات</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -47,35 +47,25 @@
                                             class="table display nowrap table-striped table-bordered scroll-horizontal">{{--scroll-horizontal--}}
                                             <thead class="">
                                             <tr>
-                                                <th>name </th>
-                                                <th>photo</th>
-                                                <th>activate</th>
-                                                <th>actions</th>
+                                                <th>#id</th>
+                                                <th>الاسم</th>
+                                                <th>الاكشن</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @isset($services )
-                                                @foreach($services  as $service )
+                                            @isset($cars )
+                                                @foreach($cars  as $car )
                                                     <tr>
-                                                        <td>{{$service-> name_en}}</td>
-                                                        <td><img src="{{asset($service-> photo)}}" style="height: 50px;width:50px"></td>
-                                                        @if ($service-> status == 0)
-                                                        <td class="text-danger">
-                                                            No
-                                                        </td>
-                                                            @else
-                                                        <td class="text-success">
-                                                            Yes
-                                                        </td>
-                                                        @endif
+                                                        <td>{{$car-> id}}</td>
+                                                        <td>{{$car-> name}}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                                <a href="{{route('admin.services.edit',$service -> id)}}"
-                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">Edit</a>
+                                                                <a href="{{route('admin.cars.brands.edit',$car -> id)}}"
+                                                                    class="btn btn-outline-primary btn-sm box-shadow-3 mr-1 mb-1">تعديل</a>
 
-                                                            <a href="{{route('admin.services.delete',$service -> id)}}"
-                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">Delete</a>
+                                                            {{-- <a href="{{route('admin.services.delete',$service -> id)}}"
+                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">Delete</a> --}}
                                                             </div>
                                                         </td>
                                                     </tr>

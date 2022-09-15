@@ -1,5 +1,5 @@
-@extends('layouts.admin')
-@section('title',"Edit Service")
+@extends('layouts.app')
+@section('title',"تعديل فئة السيارة")
 
 @section('content')
 
@@ -10,11 +10,11 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home </a>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">الرئيسية </a>
                                 </li>
-                            <li class="breadcrumb-item"><a href="{{route('admin.services')}}">  Service </a>
+                            <li class="breadcrumb-item"><a href="{{route('admin.cars.kinds')}}">  فئة السيارات </a>
                                 </li>
-                                <li class="breadcrumb-item active">Edit Service -  {{$service->name_en}}
+                                <li class="breadcrumb-item active">تعديل فئة سياراة -  {{$car->name}}
                                 </li>
                             </ol>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> Edit Service </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> تعديل فئة سياراة -  {{$car->name}}</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -44,53 +44,45 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.services.update',$service -> id)}}"
+                                        <form class="form" action="{{route('admin.cars.kinds.update',$car->id)}}"
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input name="id" value="{{$service -> id}}" type="hidden">
-
-
-
-                                            <div class="form-group">
-                                                <div class="text-center">
-                                                    <img
-                                                src="@if(!empty($service->photo)){{asset($service->photo)}} @else {{asset('Adminlook/images/logo/logo.png')}} @endif"
-                                                        class="rounded-circle  height-150" alt="service  Photo">
-                                                </div>
-                                            </div>
+                                            <input type="hidden" value="{{$car->id}}" name="id">
                                             <div class="form-body">
-                                                <div class="form-group">
-                                                    <label> Photo  </label>
-                                                    <label id="projectinput7" class="file center-block">
-                                                        <input type="file" id="file" name="photo"  />
-                                                        <span class="file-custom"></span>
-                                                    </label>
-                                                    @error('photo')
-                                                    <span class="text-danger">{{$message}}</span>
-                                                    @enderror
-                                                </div>
-                                                <h4 class="form-section"><i class="ft-home"></i> Service Details </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i> البيانات </h4>
                                                         <div class="row">
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label for="projectinput1"> Name English </label>
-                                                                    <input type="text" value="{{$service ->name_en }}" id="name"
+                                                                    <label for="projectinput1">الاسم </label>
+                                                                    <input type="text" id="name"
                                                                         class="form-control"
-                                                                        placeholder="Name English"
-                                                                        name="name_en" required>
-                                                                    @error("name_en")
+                                                                        value="{{$car->name}}"
+                                                                        name="name" required>
+                                                                    @error("name")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label for="projectinput1"> Name French </label>
-                                                                    <input type="text" value="{{$service ->name_fr }}" id="name"
+                                                                    <label for="projectinput1">سعر الشركة </label>
+                                                                    <input type="number" id="price_company"
                                                                         class="form-control"
-                                                                        placeholder="Name French"
-                                                                        name="name_fr" required>
-                                                                    @error("name_fr")
+                                                                        value="{{$car->price_company}}"
+                                                                        name="price_company" required step="000.01">
+                                                                    @error("price_company")
+                                                                <span class="text-danger">{{$message}}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="projectinput1">سعر المحاسب علية </label>
+                                                                    <input type="number" id="prica_calculate"
+                                                                        class="form-control"
+                                                                        value="{{$car->price_calculate}}"
+                                                                        name="prica_calculate" required step="000.01">
+                                                                    @error("prica_calculate")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror
                                                                 </div>
@@ -101,10 +93,10 @@
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
-                                                    <i class="ft-x"></i> Back
+                                                    <i class="ft-x"></i>  تراجع
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> Update
+                                                    <i class="la la-check-square-o"></i> حفظ
                                                 </button>
                                             </div>
                                         </form>

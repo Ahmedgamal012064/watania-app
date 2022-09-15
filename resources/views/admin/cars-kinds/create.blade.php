@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title',"اضافة موديل السيارة")
+@section('title',"اضافة فئة السيارة")
 
 @section('content')
 
@@ -12,9 +12,9 @@
                             <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('home')}}">الرئيسية </a>
                                 </li>
-                            <li class="breadcrumb-item"><a href="{{route('admin.cars.models')}}">  موديل السيارات </a>
+                            <li class="breadcrumb-item"><a href="{{route('admin.cars.kinds')}}">  فئة السيارات </a>
                                 </li>
-                                <li class="breadcrumb-item active">اضافة موديل سياراة
+                                <li class="breadcrumb-item active">اضافة فئة سياراة
                                 </li>
                             </ol>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> اضافة موديل سياراة </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> اضافة فئة سياراة </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -44,7 +44,7 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('admin.cars.models.store')}}"
+                                        <form class="form" action="{{route('admin.cars.kinds.store')}}"
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
@@ -52,12 +52,36 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label for="projectinput1">الموديل </label>
-                                                                    <input type="text" id="model"
+                                                                    <label for="projectinput1">الاسم </label>
+                                                                    <input type="text" id="name"
                                                                         class="form-control"
-                                                                        placeholder="الموديل"
-                                                                        name="model" required>
-                                                                    @error("model")
+                                                                        placeholder="الاسم"
+                                                                        name="name" required>
+                                                                    @error("name")
+                                                                <span class="text-danger">{{$message}}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="projectinput1">سعر الشركة </label>
+                                                                    <input type="number" id="price_company"
+                                                                        class="form-control"
+                                                                        placeholder="سعر الشركة "
+                                                                        name="price_company" required step="000.01">
+                                                                    @error("price_company")
+                                                                <span class="text-danger">{{$message}}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="projectinput1">سعر المحاسب علية </label>
+                                                                    <input type="number" id="prica_calculate"
+                                                                        class="form-control"
+                                                                        placeholder="سعر المحاسب علية "
+                                                                        name="prica_calculate" required step="000.01">
+                                                                    @error("prica_calculate")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror
                                                                 </div>
