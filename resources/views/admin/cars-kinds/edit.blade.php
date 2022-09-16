@@ -69,7 +69,7 @@
                                                                     <input type="number" id="price_company"
                                                                         class="form-control"
                                                                         value="{{$car->price_company}}"
-                                                                        name="price_company" required step="000.01">
+                                                                        name="price_company" required step="any">
                                                                     @error("price_company")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror
@@ -81,7 +81,7 @@
                                                                     <input type="number" id="prica_calculate"
                                                                         class="form-control"
                                                                         value="{{$car->price_calculate}}"
-                                                                        name="prica_calculate" required step="000.01">
+                                                                        name="prica_calculate" required step="any">
                                                                     @error("prica_calculate")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror

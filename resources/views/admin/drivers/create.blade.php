@@ -65,7 +65,7 @@
                                                             <div class="form-group">
                                                                 <label for="projectinput1">صورة الرخصة الامامية </label>
                                                                 <input type="file" id="front_licence_photo" class="form-control"
-                                                                    name="front_licence_photo">
+                                                                    name="front_licence_photo" required>
                                                                 @error("front_licence_photo")
                                                             <span class="text-danger">{{$message}}</span>
                                                                 @enderror
@@ -75,7 +75,7 @@
                                                             <div class="form-group">
                                                                 <label for="projectinput1">صورة الرخصة الخلفية </label>
                                                                 <input type="file" id="back_licence_photo" class="form-control"
-                                                                    name="back_licence_photo">
+                                                                    name="back_licence_photo" required>
                                                                 @error("back_licence_photo")
                                                             <span class="text-danger">{{$message}}</span>
                                                                 @enderror
@@ -85,7 +85,7 @@
                                                             <div class="form-group">
                                                                 <label for="projectinput1">صورة البطاقة الامامية </label>
                                                                 <input type="file"  id="front_id_photo" class="form-control"
-                                                                    name="front_id_photo">
+                                                                    name="front_id_photo" required>
                                                                 @error("front_id_photo")
                                                             <span class="text-danger">{{$message}}</span>
                                                                 @enderror
@@ -95,7 +95,7 @@
                                                             <div class="form-group">
                                                                 <label for="projectinput1">صورة البطاقة الخلفية </label>
                                                                 <input type="file" id="back_id_photo" class="form-control"
-                                                                    name="back_id_photo">
+                                                                    name="back_id_photo" required>
                                                                 @error("back_id_photo")
                                                             <span class="text-danger">{{$message}}</span>
                                                                 @enderror
@@ -107,6 +107,7 @@
                                                                     <input type="text" id="name"
                                                                         class="form-control"
                                                                         placeholder="اسم سائق"
+                                                                        value="{{old('name')}}"
                                                                         name="name" required>
                                                                     @error("name")
                                                                 <span class="text-danger">{{$message}}</span>
@@ -119,6 +120,7 @@
                                                                     <input type="tel" value="" id="phone"
                                                                         class="form-control"
                                                                         placeholder="رقم الهاتف"
+                                                                        value="{{old('phone')}}"
                                                                         name="phone" required>
                                                                     @error("phone")
                                                                 <span class="text-danger">{{$message}}</span>
@@ -131,6 +133,7 @@
                                                                     <input type="tel" value="" id="another_phone"
                                                                         class="form-control"
                                                                         placeholder="رقم الهاتف اخر"
+                                                                        value="{{old('another_phone')}}"
                                                                         name="another_phone">
                                                                     @error("another_phone")
                                                                 <span class="text-danger">{{$message}}</span>
@@ -144,6 +147,7 @@
                                                                     <input type="datetime-local" id="goes"
                                                                         class="form-control"
                                                                         placeholder="الانصراف"
+                                                                        value="{{old('goes')}}"
                                                                         name="goes">
                                                                     @error("goes")
                                                                 <span class="text-danger">{{$message}}</span>
@@ -157,6 +161,7 @@
                                                                     <input type="datetime-local" id="attend"
                                                                         class="form-control"
                                                                         placeholder="الحضور"
+                                                                        value="{{old('attend')}}"
                                                                         name="attend">
                                                                     @error("attend")
                                                                 <span class="text-danger">{{$message}}</span>
@@ -170,7 +175,8 @@
                                                                     <input type="number" id="day_price"
                                                                         class="form-control"
                                                                         placeholder=" سعر اليومية"
-                                                                        name="day_price" required step="000.01">
+                                                                        value="{{old('day_price')}}"
+                                                                        name="day_price" required step="any">
                                                                     @error("day_price")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror
@@ -182,6 +188,7 @@
                                                                     <label for="projectinput1">محل الاقامة</label>
                                                                     <input type="text" id="country_set"
                                                                         class="form-control"
+                                                                        value="{{old('country_set')}}"
                                                                         placeholder="محل الاقامة"
                                                                         name="country_set">
                                                                     @error("country_set")

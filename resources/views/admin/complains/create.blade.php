@@ -56,6 +56,7 @@
                                                                     <input type="text" id="name"
                                                                         class="form-control"
                                                                         placeholder="الاسم"
+                                                                        value="{{old('name')}}"
                                                                         name="name" required>
                                                                     @error("name")
                                                                 <span class="text-danger">{{$message}}</span>

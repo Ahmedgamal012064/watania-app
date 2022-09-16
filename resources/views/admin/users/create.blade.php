@@ -55,6 +55,7 @@
                                                                     <label for="projectinput1"> اسم المستخدم </label>
                                                                     <input type="text" value="" id="name"
                                                                         class="form-control"
+                                                                        value="{{old('name')}}"
                                                                         placeholder="اسم المستخدم"
                                                                         name="name" required>
                                                                     @error("name")
@@ -67,6 +68,7 @@
                                                                     <label for="projectinput1"> البريد الالكتروني</label>
                                                                     <input type="email" value="" id="email"
                                                                         class="form-control"
+                                                                        value="{{old('email')}}"
                                                                         placeholder=" البريد الالكتروني"
                                                                         name="email" required>
                                                                     @error("email")

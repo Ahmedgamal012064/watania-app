@@ -54,6 +54,7 @@
                                                                 <div class="form-group">
                                                                     <label for="projectinput1">الاسم </label>
                                                                     <input type="text" id="name"
+                                                                        value="{{old('name')}}"
                                                                         class="form-control"
                                                                         placeholder="الاسم"
                                                                         name="name" required>

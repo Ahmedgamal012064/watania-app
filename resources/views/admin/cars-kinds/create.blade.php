@@ -56,6 +56,7 @@
                                                                     <input type="text" id="name"
                                                                         class="form-control"
                                                                         placeholder="الاسم"
+                                                                        value="{{old('name')}}"
                                                                         name="name" required>
                                                                     @error("name")
                                                                 <span class="text-danger">{{$message}}</span>
@@ -68,7 +69,8 @@
                                                                     <input type="number" id="price_company"
                                                                         class="form-control"
                                                                         placeholder="سعر الشركة "
-                                                                        name="price_company" required step="000.01">
+                                                                        value="{{old('price_company')}}"
+                                                                        name="price_company" required step="any">
                                                                     @error("price_company")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror
@@ -80,7 +82,8 @@
                                                                     <input type="number" id="prica_calculate"
                                                                         class="form-control"
                                                                         placeholder="سعر المحاسب علية "
-                                                                        name="prica_calculate" required step="000.01">
+                                                                        value="{{old('prica_calculate')}}"
+                                                                        name="prica_calculate" required step="any">
                                                                     @error("prica_calculate")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                     @enderror

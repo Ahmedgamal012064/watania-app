@@ -56,6 +56,7 @@
                                                                     <input type="text" id="color"
                                                                         class="form-control"
                                                                         placeholder="الاسم"
+                                                                        value="{{old('color')}}"
                                                                         name="color" required>
                                                                     @error("color")
                                                                 <span class="text-danger">{{$message}}</span>
@@ -67,6 +68,7 @@
                                                                     <label for="projectinput1">اللون </label>
                                                                     <input type="color" id="hex"
                                                                         class="form-control"
+                                                                        value="{{old('hex')}}"
                                                                         placeholder="اللون"
                                                                         name="hex" required>
                                                                     @error("hex")

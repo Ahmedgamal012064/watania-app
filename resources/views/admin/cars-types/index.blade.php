@@ -59,7 +59,7 @@
                                                     <tr>
                                                         <td>{{$car-> id}}</td>
                                                         <td>{{$car-> name}}</td>
-]                                                        <td>
+                                                       <td>
                                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                                 <a href="{{route('admin.cars.types.edit',$car -> id)}}"
                                                                     class="btn btn-outline-primary btn-sm box-shadow-3 mr-1 mb-1">تعديل</a>

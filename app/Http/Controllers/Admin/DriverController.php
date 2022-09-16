@@ -128,20 +128,42 @@ class DriverController extends Controller
                         ->withInput();
         }
 
-        if ($request->has('front_licence_photo') || $request->has('back_licence_photo')
-        || $request->has('front_id_photo') || $request->has('back_id_photo')
-        || $request->has('personal_photo')) {
+        if ($request->has('front_licence_photo')) {
             $file1 = uploadImage('drivers/licence/front', $request->front_licence_photo);
+
+            Driver::where('id', $id)->update([
+                'front_licence_photo'  =>  $file1
+            ]);
+        }
+
+        if ($request->has('back_licence_photo')) {
             $file2 = uploadImage('drivers/licence/back', $request->back_licence_photo);
+
+            Driver::where('id', $id)->update([
+                'back_licence_photo'   =>  $file2,
+            ]);
+        }
+
+        if ($request->has('front_id_photo')) {
             $file3 = uploadImage('drivers/ids/front', $request->front_id_photo);
+
+            Driver::where('id', $id)->update([
+                'front_id_photo'       =>  $file3
+            ]);
+        }
+
+        if ($request->has('back_id_photo')) {
             $file4 = uploadImage('drivers/ids/back', $request->back_id_photo);
+
+            Driver::where('id', $id)->update([
+                'back_id_photo'        =>  $file4,
+            ]);
+        }
+
+        if ($request->has('personal_photo')) {
             $file5 = uploadImage('drivers/personal', $request->personal_photo);
 
             Driver::where('id', $id)->update([
-                'front_licence_photo'  =>  $file1,
-                'back_licence_photo'   =>  $file2,
-                'front_id_photo'       =>  $file3,
-                'back_id_photo'        =>  $file4,
                 'personal_photo'       =>  $file5,
             ]);
         }
