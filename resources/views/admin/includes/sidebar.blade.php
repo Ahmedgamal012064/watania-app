@@ -14,7 +14,7 @@
                     </a>
                     <ul class="menu-content">
                         @if (str_contains(Auth::user()->roles, 'view-car-type'))
-=                        <li><a class="menu-item" href="{{route('admin.cars.types')}}"
+                     <li><a class="menu-item" href="{{route('admin.cars.types')}}"
                             data-i18n="nav.dash.ecommerce"> عرض الكل  </a>
                         </li>
                         @endif
