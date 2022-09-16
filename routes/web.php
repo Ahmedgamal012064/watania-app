@@ -114,12 +114,12 @@ Route::group(['namespace' => 'Admin'], function () {
 
     ######################### Begin users Routes ########################Done
     Route::group(['prefix' => 'users'], function () {
-        Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index']) -> name('admin.users');
-        Route::get('create', [App\Http\Controllers\Admin\UserController::class, 'create']) -> name('admin.users.create');
-        Route::post('store', [App\Http\Controllers\Admin\UserController::class, 'store']) -> name('admin.users.store');
-        Route::get('edit/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit']) -> name('admin.users.edit');
-        Route::post('update/{id}', [App\Http\Controllers\Admin\UserController::class, 'update']) -> name('admin.users.update');
-        Route::get('delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy']) -> name('admin.users.delete');
+        Route::get('/', [App\Http\Controllers\Admin\UsersController::class, 'index']) -> name('admin.users');
+        Route::get('create', [App\Http\Controllers\Admin\UsersController::class, 'create']) -> name('admin.users.create');
+        Route::post('store', [App\Http\Controllers\Admin\UsersController::class, 'store']) -> name('admin.users.store');
+        Route::get('edit/{id}', [App\Http\Controllers\Admin\UsersController::class, 'edit']) -> name('admin.users.edit');
+        Route::post('update/{id}', [App\Http\Controllers\Admin\UsersController::class, 'update']) -> name('admin.users.update');
+        Route::get('delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'destroy']) -> name('admin.users.delete');
     });
     ######################### End users Routes  ########################
 
